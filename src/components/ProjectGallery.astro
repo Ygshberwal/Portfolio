@@ -8,7 +8,7 @@ const images = projectImages[slug] ?? [];
 {images.length > 0 && (
   <section class="project-gallery" aria-label={slug === 'sanskrit-pitch' ? 'Research presentation photo' : 'Application screenshots'}>
     {images.map(image => (
-      <figure>
+      <figure class:list={{ 'project-photo': image.kind === 'photo' }}>
         <a href={`/images/${image.base}-${image.variants.at(-1)}.webp`} target="_blank" rel="noopener noreferrer" aria-label={`Open larger image: ${image.alt}`}>
           <PortfolioImage image={image} sizes="(max-width: 760px) 90vw, 85vw" />
         </a>

@@ -46,6 +46,8 @@ Homepage, nine project case studies, filterable directory, work/education timeli
 
 Selected public images and `public/resume.pdf` are committed so a fresh clone works without private originals. `npm run images` is an optional local regeneration tool; original photos and authoring notes are Git-ignored. The downloadable résumé is supplied unchanged; no phone number is extracted into page copy.
 
+Personal photos use the shared `PhotoFrame.astro` component: a contained thin matte, consistent caption spacing, and image-specific aspect ratios/focal positions in `src/data/media.ts`. The graduation crop preserves the full-length subject and institute sign; the field photo focuses on the team rather than its large sky/ground margins. Gallery pairs share widths and top edges instead of arbitrary staggered offsets, including on mobile. Source files are never cropped or rewritten. Project previews fit their native ratio inside the cover, while case-study screenshots and the presentation photo remain fully visible at their original proportions.
+
 ## Quality checks
 
 Type-check + production build. Playwright Chromium desktop and mobile profiles: navigation, disclosures, filter behavior, route/link checks, automated axe WCAG A/AA checks, horizontal overflow, reduced motion, no-JavaScript content, and absence of known internal identifiers/credential prefixes in rendered HTML.

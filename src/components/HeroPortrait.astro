@@ -1,10 +1,8 @@
 ---
-import PortfolioImage from './PortfolioImage.astro';
+import PhotoFrame from './PhotoFrame.astro';
 import { portraits } from '../data/media';
 ---
 <figure class="hero-portrait">
-  <div class="hero-portrait-frame">
-    <PortfolioImage image={portraits.profile} sizes="(max-width: 760px) 280px, 380px" priority />
-  </div>
+  <PhotoFrame image={portraits.profile} sizes="(max-width: 760px) 280px, 380px" priority />
   <figcaption><span>Yogesh Berwal</span><span>Software Engineer</span></figcaption>
 </figure>

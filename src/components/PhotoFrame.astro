@@ -1,0 +1,21 @@
+---
+import type { PortfolioImage as ImageData } from '../data/media';
+import PortfolioImage from './PortfolioImage.astro';
+
+interface Props {
+  image: ImageData;
+  sizes?: string;
+  priority?: boolean;
+}
+const { image, sizes, priority = false } = Astro.props;
+const framing = image.framing ?? { ratio: `${image.width} / ${image.height}`, position: '50% 50%' };
+---
+<div
+  class="photo-frame"
+  data-photo={image.base}
+  style={`--photo-ratio: ${framing.ratio}; --photo-position: ${framing.position};`}
+>
+  <div class="photo-viewport">
+    <PortfolioImage image={image} sizes={sizes} priority={priority} />
+  </div>
+</div>

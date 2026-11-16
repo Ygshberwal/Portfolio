@@ -7,7 +7,7 @@ import SelectedWork from '../components/SelectedWork.astro';
 import Education from '../components/Education.astro';
 import Research from '../components/Research.astro';
 import BeyondCode from '../components/BeyondCode.astro';
-import PortfolioImage from '../components/PortfolioImage.astro';
+import PhotoFrame from '../components/PhotoFrame.astro';
 import { portraits } from '../data/media';
 import { identity, skills } from '../data/portfolio';
 import '../styles/scroll.css';
@@ -47,7 +47,7 @@ import '../styles/timeline.css';
     <Experience />
 
     <section id="about" class="about-section wrap section" aria-labelledby="about-title">
-      <div class="about-layout"><div><p class="eyebrow">03 / THE PERSON BEHIND IT</p><h2 id="about-title">An engineer.<br />Always a <em>student.</em></h2><figure class="profile-photo"><PortfolioImage image={portraits.about} sizes="(max-width: 760px) 230px, 260px" /><figcaption>Yogesh Berwal <span>Bengaluru, India</span></figcaption></figure></div><div class="about-copy"><p class="large-copy">I like understanding how things fit together. Then making them work.</p><p>I'm a computer science postgraduate from IIT Mandi, working across backend systems, data, and product interfaces. My internship at Amazon gave me a closer look at what reliable services demand: careful trade-offs, clear communication, and a lot of testing.</p><p>Outside work, I build things for needs I recognize. A better way to organize my day. A less fragmented parking workflow. A language-modeling problem that isn't easily solved.</p><p>I care about the details between an idea and something someone can actually use.</p><a class="text-link" href="#beyond-code">Away from the keyboard <Arrow /></a></div></div>
+      <div class="about-layout"><div><p class="eyebrow">03 / THE PERSON BEHIND IT</p><h2 id="about-title">An engineer.<br />Always a <em>student.</em></h2><figure class="profile-photo"><PhotoFrame image={portraits.about} sizes="(max-width: 760px) 260px, 280px" /><figcaption>Yogesh Berwal <span>Bengaluru, India</span></figcaption></figure></div><div class="about-copy"><p class="large-copy">I like understanding how things fit together. Then making them work.</p><p>I'm a computer science postgraduate from IIT Mandi, working across backend systems, data, and product interfaces. My internship at Amazon gave me a closer look at what reliable services demand: careful trade-offs, clear communication, and a lot of testing.</p><p>Outside work, I build things for needs I recognize. A better way to organize my day. A less fragmented parking workflow. A language-modeling problem that isn't easily solved.</p><p>I care about the details between an idea and something someone can actually use.</p><a class="text-link" href="#beyond-code">Away from the keyboard <Arrow /></a></div></div>
       <div class="skills-heading"><h3>Tools I use to build and ship</h3><span class="micro">DIFFERENT TOOLS. DIFFERENT DEPTHS OF EXPERIENCE.</span></div>
       <div class="skills-grid">{skills.map((group, index) => <div class="skill-group"><span class="micro">0{index + 1}</span><h4>{group.title}</h4><ul>{group.items.map(item => <li>{item}</li>)}</ul></div>)}</div>
     </section>

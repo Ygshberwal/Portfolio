@@ -55,7 +55,7 @@ export function initializeScrollExperience() {
       }
     }, { threshold: 0.12 });
     document.querySelectorAll(
-      '.experience h3, .about-copy, .skills-heading, .skill-group, .education-list h3, .paper-list > li, .hockey-gallery figure, .outdoor-gallery figure, .contact-section h2',
+      '.experience h3, .about-copy, .skills-heading, .skill-group, .education-list h3, .paper-list > li, .hockey-gallery, .outdoor-gallery, .contact-section h2',
     ).forEach(element => reveals.observe(element));
 
     media.add('(min-width: 1100px) and (min-height: 740px)', () => {

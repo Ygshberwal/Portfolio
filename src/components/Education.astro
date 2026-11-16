@@ -1,7 +1,7 @@
 ---
 import { education, identity, codingHighlights } from '../data/portfolio';
 import { portraits } from '../data/media';
-import PortfolioImage from './PortfolioImage.astro';
+import PhotoFrame from './PhotoFrame.astro';
 import Arrow from './Arrow.astro';
 ---
 <section id="education" class="education-section wrap section" aria-labelledby="education-title">
@@ -24,7 +24,7 @@ import Arrow from './Arrow.astro';
       ))}
     </ol>
     <figure class="education-photo">
-      <PortfolioImage image={portraits.education} sizes="(max-width: 760px) 90vw, 350px" />
+      <PhotoFrame image={portraits.education} sizes="(max-width: 760px) 85vw, 320px" />
       <figcaption>{portraits.education.caption}</figcaption>
     </figure>
   </div>

@@ -7,6 +7,27 @@
     margin-top: 13px;
   }
 
+  .photo-frame {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--paper);
+  }
+
+  .photo-viewport {
+    aspect-ratio: var(--photo-ratio);
+    overflow: hidden;
+    border-radius: 1px;
+  }
+
+  .photo-viewport > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--photo-position, 50% 50%);
+  }
+
   .has-screenshot .cover-art {
     min-height: 0;
     padding: 18px 0;
@@ -21,18 +42,22 @@
   }
 
   .screenshot-frame {
-    width: 100%;
-    border: 1px solid rgb(32 40 32 / 12%);
-    box-shadow: 0 12px 28px -18px rgb(32 40 32 / 32%);
-    overflow: hidden;
-    background: #fafbff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
     transition: transform 350ms ease;
   }
 
   .screenshot-frame img {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
+    border: 1px solid rgb(32 40 32 / 12%);
+    border-radius: 2px;
+    box-shadow: 0 12px 28px -18px rgb(32 40 32 / 28%);
   }
 
   .cover-link:hover .screenshot-frame {
@@ -127,24 +152,8 @@
   }
 
   .profile-photo {
-    max-width: 260px;
-    margin: 35px 0 0 34px;
-    position: relative;
-    isolation: isolate;
-  }
-
-  .profile-photo::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset: 16px -16px 30px 16px;
-    border: 1px solid var(--line);
-  }
-
-  .profile-photo img {
-    width: 100%;
-    height: auto;
-    background: #e9e9e5;
+    max-width: 280px;
+    margin: 32px 0 0;
   }
 
   .profile-photo figcaption {
@@ -196,16 +205,10 @@
   }
 
   .education-photo {
-    padding: 16px;
-    background: #e9ede4;
-    margin-top: -16px;
-  }
-
-  .education-photo img {
+    max-width: 320px;
     width: 100%;
-    height: 350px;
-    object-fit: cover;
-    object-position: 50% 70%;
+    margin: 0;
+    justify-self: end;
   }
 
   .education-photo figcaption {
@@ -356,24 +359,9 @@
 
   .hockey-gallery {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px;
     align-items: start;
-  }
-
-  .hockey-gallery figure:nth-child(2) {
-    margin-top: 65px;
-  }
-
-  .hockey-gallery img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-  }
-
-  .hockey-gallery figure:nth-child(2) img {
-    object-position: 50% 64%;
   }
 
   .beyond-note {
@@ -388,9 +376,29 @@
   }
 
   .project-gallery figure {
-    background: #edf0e7;
-    padding: 24px;
+    background: #eff0eb;
+    padding: 18px;
     border: 1px solid var(--line);
+    border-radius: 3px;
+  }
+
+  .project-gallery figure > a {
+    display: block;
+  }
+
+  .project-gallery figure.project-photo {
+    background: transparent;
+    padding: 0;
+    border: 0;
+    max-width: 1040px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .project-photo > a {
+    padding: 7px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
   }
 
   .project-gallery img {
@@ -456,30 +464,11 @@
     align-self: start;
   }
 
-  .hero-portrait-frame {
-    position: relative;
-    isolation: isolate;
-    background: #e7e8e2;
-  }
-
-  .hero-portrait-frame::before {
-    content: '';
-    position: absolute;
-    inset: 16px -16px -16px 16px;
-    border: 1px solid #c8d1c2;
-    z-index: -1;
-  }
-
-  .hero-portrait img {
-    width: 100%;
-    height: auto;
-  }
-
   .hero-portrait figcaption {
     display: flex;
     justify-content: space-between;
     gap: 12px;
-    margin-top: 29px;
+    margin-top: 14px;
     font-size: 10px;
   }
 
@@ -599,20 +588,11 @@
 
   .outdoor-gallery {
     display: grid;
-    grid-template-columns: 1fr .8fr;
-    gap: 50px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
     max-width: 980px;
     margin-inline: auto;
     align-items: start;
-  }
-
-  .outdoor-gallery figure:nth-child(2) {
-    margin-top: 65px;
-  }
-
-  .outdoor-gallery img {
-    width: 100%;
-    height: auto;
   }
 
   .personal-socials {
@@ -644,20 +624,18 @@
     .site-header > nav:not(.mobile-nav) { gap: 18px; margin-right: 18px; }
     .supporting-work strong { font-size: 14px; }
     .coding-note { align-items: start; flex-direction: column; gap: 10px; }
-    .education-photo img { height: 300px; }
   }
 
   @media (max-width: 760px) {
-    .hero-portrait { width: min(80%, 280px); margin: 0 18px 35px auto; }
+    .hero-portrait { width: min(100%, 300px); margin: 0 auto 32px; }
     .hero-socials { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 320px; margin-top: 14px; gap: 0 18px; }
     .hero-socials a { font-size: 12px; }
     .contact-profile-links { gap: 8px 23px; }
     .contact-profile-links a { font-size: 12px; }
     .personal-chapter { flex-direction: column; gap: 15px; }
     .personal-chapter p { font-size: 11px; }
-    .outdoor-gallery { gap: 23px; grid-template-columns: 1fr; }
-    .outdoor-gallery figure { width: 90%; }
-    .outdoor-gallery figure:nth-child(2) { margin-top: 0; margin-left: auto; width: 75%; }
+    .outdoor-gallery { gap: 28px; grid-template-columns: 1fr; }
+    .outdoor-gallery figure { width: 100%; max-width: 420px; margin-inline: auto; }
     .personal-socials p { font-size: 22px; }
     .supporting-work { margin-top: 40px; }
     .supporting-work ul { grid-template-columns: 1fr; gap: 0; }
@@ -666,9 +644,8 @@
     .supporting-work strong { font-size: 18px; }
     .timeline { padding-left: 23px; }
     .experience::before { left: -28px; }
-    .profile-photo { margin-left: 14px; max-width: 230px; }
-    .education-photo { max-width: 380px; margin: 20px 0 0 auto; }
-    .education-photo img { height: 330px; }
+    .profile-photo { max-width: 260px; }
+    .education-photo { max-width: 320px; margin: 28px auto 0; }
     .education-list { padding-left: 22px; }
     .education-list > li::before { left: -26px; }
     .education-list > li { padding-block: 24px; }
@@ -687,7 +664,6 @@
     .paper-bottom { display: block; }
     .paper-status { font-size: 9px; margin-block: 20px 10px; }
     .hockey-gallery { grid-template-columns: 1fr; gap: 30px; }
-    .hockey-gallery figure:nth-child(2) { margin-top: 0; width: 85%; margin-left: auto; }
     .beyond-note { font-size: 12px; }
     .project-gallery figure { padding: 12px; }
     .project-gallery figcaption { display: block; font-size: 9px; }
@@ -704,13 +680,11 @@
 
   @media print {
     .hero-portrait { max-width: 180px; }
-    .hero-portrait-frame::before { display: none; }
     .hero-portrait { transform: none !important; }
     .outdoor-gallery { max-width: 350px; }
     .timeline, .education-list { border-left: 0; }
     .experience::before, .education-list > li::before { display: none; }
     .profile-photo, .education-photo, .hockey-gallery { max-width: 250px; }
-    .hockey-gallery figure:nth-child(2) { margin-top: 0; }
     .paper-list > li { break-inside: avoid; }
   }
 }
