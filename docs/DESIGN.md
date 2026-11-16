@@ -17,6 +17,7 @@ The portfolio should be easy to understand in 30 seconds, with deeper code-linke
 - All key copy and project links are server-rendered and available without JavaScript. Native navigation and browser scrolling remain intact.
 - The hero uses the owner's supplied black-and-white portrait. No stock/generated identity image or placeholder face is used.
 - Case studies include limitations and source deep links. No invented engineering decisions, project traction, testimonials, scientific comparisons, or clinical claims.
+- LinkedIn, GitHub, LeetCode, and GeeksforGeeks are visible together in the hero, wrapping into a two-column mobile layout. Coding highlights pair the 2,000+ problems claim with the owner-confirmed #2 placement on IIT Mandi's GFG college leaderboard (students and alumni), linked to that leaderboard and dated November 2026. This is a static college ranking, not a global or live-updating rank.
 
 ## Interaction
 

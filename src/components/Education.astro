@@ -1,5 +1,5 @@
 ---
-import { education, identity } from '../data/portfolio';
+import { education, identity, codingHighlights } from '../data/portfolio';
 import { portraits } from '../data/media';
 import PortfolioImage from './PortfolioImage.astro';
 import Arrow from './Arrow.astro';
@@ -29,7 +29,16 @@ import Arrow from './Arrow.astro';
     </figure>
   </div>
   <div class="coding-note">
-    <p><strong>2,000+</strong> DSA problems solved across programming platforms.</p>
+    <div class="coding-highlights">
+      <p><strong>{codingHighlights.problemsSolved}</strong><span>DSA problems solved across programming platforms.</span></p>
+      <p>
+        <strong>#{codingHighlights.gfgCollegeRank}</strong>
+        <span>
+          Rank on the <a href={identity.gfgLeaderboard} target="_blank" rel="noopener noreferrer">{codingHighlights.institution} GeeksforGeeks leaderboard</a>.
+          <small>College ranking · students & alumni · {codingHighlights.rankingAsOf}</small>
+        </span>
+      </p>
+    </div>
     <div>
       <a class="text-link" href={identity.leetcode} target="_blank" rel="noopener noreferrer">LeetCode <Arrow diagonal /></a>
       <a class="text-link" href={identity.geeksforgeeks} target="_blank" rel="noopener noreferrer">GeeksforGeeks <Arrow diagonal /></a>

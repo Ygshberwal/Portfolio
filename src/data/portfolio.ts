@@ -6,10 +6,20 @@ export const identity = {
   location: 'Bengaluru, India',
   leetcode: 'https://leetcode.com/yogeshberwal/',
   geeksforgeeks: 'https://www.geeksforgeeks.org/profile/ygshberwal?tab=activity',
+  gfgLeaderboard: 'https://www.geeksforgeeks.org/colleges/indian-institute-of-technology-iit-mandi/students/',
   instagram: 'https://www.instagram.com/ygshberwal26/',
   photography: 'https://www.instagram.com/through_the_lens.eye/',
   resume: 'https://drive.google.com/file/d/19q5LmZmuvKb35tK3pa1UunjTUf1nGga5/view?usp=sharing',
   resumeDownload: '/resume.pdf',
+};
+
+// Owner-confirmed college placement as of November 2026. This is a static
+// college leaderboard snapshot (including alumni), not a global ranking.
+export const codingHighlights = {
+  problemsSolved: '2,000+',
+  gfgCollegeRank: 2,
+  institution: 'IIT Mandi',
+  rankingAsOf: 'November 2026',
 };
 
 export interface ResearchPaper {

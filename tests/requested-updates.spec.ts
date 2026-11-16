@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 import sharp from 'sharp';
-import { identity } from '../src/data/portfolio';
+import { identity, codingHighlights } from '../src/data/portfolio';
 import { projectImages } from '../src/data/media';
 
 test('hero is portrait-led with LinkedIn and a genuine résumé download', async ({ page, request }, info) => {
@@ -36,6 +36,29 @@ test('FlowBoard has all three requested links and an uncropped planner', async (
   expect(prepared.width! / prepared.height!).toBeCloseTo(source.width! / source.height!, 2);
   expect(prepared.exif).toBeUndefined();
   await expect(page.getByRole('img', { name: /full FlowBoard planner/ })).toHaveAttribute('width', String(source.width));
+});
+
+test('coding profiles are prominent in the hero and the GFG rank is explicitly college-scoped', async ({ page }, info) => {
+  await page.goto('/');
+  const profiles = page.getByRole('navigation', { name: 'Professional and coding profiles' });
+  for (const [label, href] of [
+    ['LinkedIn', identity.linkedin],
+    ['GitHub', identity.github],
+    ['LeetCode', identity.leetcode],
+    ['GeeksforGeeks', identity.geeksforgeeks],
+  ]) {
+    const link = profiles.getByRole('link', { name: label, exact: true });
+    await expect(link).toHaveAttribute('href', href);
+    await expect(link).toBeInViewport({ ratio: 1 });
+  }
+  await page.screenshot({ path: `test-results/coding-profiles-${info.project.name}.png` });
+  const highlights = page.locator('.coding-highlights');
+  await expect(highlights).toContainText('2,000+');
+  await expect(highlights).toContainText('#2');
+  await expect(highlights).toContainText('students & alumni');
+  await expect(highlights).toContainText(codingHighlights.rankingAsOf);
+  await expect(highlights.getByRole('link', { name: 'IIT Mandi GeeksforGeeks leaderboard' })).toHaveAttribute('href', identity.gfgLeaderboard);
+  await highlights.screenshot({ path: `test-results/coding-highlights-${info.project.name}.png` });
 });
 
 test('parking, pitch research, and game expose their requested destinations', async ({ page }) => {

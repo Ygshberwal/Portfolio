@@ -239,6 +239,39 @@
     gap: 25px;
   }
 
+  .coding-note > .coding-highlights {
+    display: grid;
+    gap: 18px;
+  }
+
+  .coding-highlights p {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .coding-highlights strong {
+    min-width: 90px;
+    flex-shrink: 0;
+    margin-right: 0;
+  }
+
+  .coding-highlights small {
+    display: block;
+    font-size: 10px;
+    margin-top: 4px;
+  }
+
+  .coding-highlights a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+
+  .coding-highlights a:hover {
+    color: var(--green);
+  }
+
   .research-section,
   .beyond-section {
     border-top: 1px solid var(--line);
@@ -457,7 +490,8 @@
 
   .hero-socials {
     display: flex;
-    gap: 24px;
+    flex-wrap: wrap;
+    gap: 4px 24px;
     margin-top: 18px;
   }
 
@@ -615,7 +649,7 @@
 
   @media (max-width: 760px) {
     .hero-portrait { width: min(80%, 280px); margin: 0 18px 35px auto; }
-    .hero-socials { margin-top: 14px; gap: 25px; }
+    .hero-socials { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 320px; margin-top: 14px; gap: 0 18px; }
     .hero-socials a { font-size: 12px; }
     .contact-profile-links { gap: 8px 23px; }
     .contact-profile-links a { font-size: 12px; }
@@ -642,6 +676,7 @@
     .education-list .micro { font-size: 8px; }
     .coding-note p { font-size: 11px; }
     .coding-note strong { display: block; margin-bottom: 5px; }
+    .coding-highlights strong { min-width: 68px; margin-bottom: 0; }
     .paper-list > li { grid-template-columns: 27px 1fr; gap: 14px; padding-block: 27px; }
     .paper-number { font-size: 25px; }
     .paper-list h3 { font-size: 21px; }
