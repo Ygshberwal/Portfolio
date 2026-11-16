@@ -1,0 +1,35 @@
+---
+import { experience } from '../data/portfolio';
+import Arrow from './Arrow.astro';
+---
+<section id="experience" class="experience-section section" aria-labelledby="experience-title">
+  <div class="wrap experience-layout">
+    <div class="section-aside">
+      <p class="eyebrow">02 / EXPERIENCE</p>
+      <h2 id="experience-title">Learning by<br /><em>building.</em></h2>
+      <p>From teaching a first program to working across service boundaries—experiences that have shaped how I approach engineering.</p>
+    </div>
+    <div class="timeline" role="list" aria-label="Selected work experience, most recent first">
+      {experience.map(job => (
+        <article class:list={['experience', { 'earlier-experience': job.earlier }]} role="listitem">
+          <div class="experience-meta"><span>{job.dates.toUpperCase()}</span><span>{job.location.toUpperCase()}</span></div>
+          <h3>{job.company}{job.current && <span class="current-tag">CURRENT</span>}</h3>
+          <p class="role">{job.role}</p>
+          {job.earlier && <p class="micro earlier-label">EARLIER EXPERIENCE</p>}
+          {job.summary && <p>{job.summary}</p>}
+          {job.detail && (
+            <details>
+              <summary>{job.detail.label} <span aria-hidden="true">+</span></summary>
+              <div class="detail-content">
+                <ul>{job.detail.items.map(item => <li>{item}</li>)}</ul>
+                {job.detail.note && <p class="small-copy">{job.detail.note}</p>}
+                {job.detail.link && <a class="text-link" href={job.detail.link.href}>{job.detail.link.label} <Arrow /></a>}
+              </div>
+            </details>
+          )}
+          {job.tags && <ul class="tags">{job.tags.map(tag => <li>{tag}</li>)}</ul>}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

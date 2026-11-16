@@ -1,0 +1,38 @@
+---
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/newsreader/wght-italic.css';
+import '../styles/global.css';
+import '../styles/refinements.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+interface Props { title?: string; description?: string; }
+const { title = 'Yogesh Berwal | Software Engineer — Backend & Full-Stack', description = 'Yogesh Berwal is a Bengaluru-based software engineer and IIT Mandi M.Tech graduate. Explore backend engineering work at Amazon, full-stack projects, and NLP research.' } = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f7f2" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="Yogesh Berwal" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {Astro.site && <meta property="og:image" content={new URL('/og.png', Astro.site).href} />}
+    {Astro.site && <meta property="og:image:alt" content="Yogesh Berwal — Software Engineer. Backend systems, full-stack products, applied AI." />}
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="wrap"><Header /></div>
+    <slot />
+    <Footer />
+  </body>
+</html>

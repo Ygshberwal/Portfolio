@@ -1,0 +1,38 @@
+---
+import { education, identity } from '../data/portfolio';
+import { portraits } from '../data/media';
+import PortfolioImage from './PortfolioImage.astro';
+import Arrow from './Arrow.astro';
+---
+<section id="education" class="education-section wrap section" aria-labelledby="education-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">04 / EDUCATION</p>
+      <h2 id="education-title">The <em>foundations.</em></h2>
+    </div>
+    <p>Computer science at the core.<br />Still learning across disciplines.</p>
+  </div>
+  <div class="education-layout">
+    <ol class="education-list" aria-label="Education timeline, most recent first">
+      {education.map(item => (
+        <li>
+          <span class="micro">{item.dates}</span>
+          <h3>{item.school}</h3>
+          <p>{item.degree}</p>
+          <span class="small-copy">CGPA {item.grade}</span>
+        </li>
+      ))}
+    </ol>
+    <figure class="education-photo">
+      <PortfolioImage image={portraits.education} sizes="(max-width: 760px) 90vw, 350px" />
+      <figcaption>{portraits.education.caption}</figcaption>
+    </figure>
+  </div>
+  <div class="coding-note">
+    <p><strong>2,000+</strong> DSA problems solved across programming platforms.</p>
+    <div>
+      <a class="text-link" href={identity.leetcode} target="_blank" rel="noopener noreferrer">LeetCode <Arrow diagonal /></a>
+      <a class="text-link" href={identity.geeksforgeeks} target="_blank" rel="noopener noreferrer">GeeksforGeeks <Arrow diagonal /></a>
+    </div>
+  </div>
+</section>

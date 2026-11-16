@@ -1,0 +1,40 @@
+---
+import PortfolioImage from './PortfolioImage.astro';
+import { hockeyPhotos, outdoorPhotos } from '../data/media';
+import { identity } from '../data/portfolio';
+import Arrow from './Arrow.astro';
+---
+<section id="beyond-code" class="beyond-section wrap section" aria-labelledby="beyond-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">06 / AWAY FROM THE KEYBOARD</p>
+      <h2 id="beyond-title">Curiosity doesn't end<br /><em>at the keyboard.</em></h2>
+    </div>
+    <p>On a field, out on a trail,<br />or seeing somewhere new.</p>
+  </div>
+  <div class="personal-chapter"><h3>On the field.</h3><p>Hockey, cricket, and the fun of playing as a team.<br />A favorite memory: gold with IIT Mandi at Aarohan, IIT Ropar, in 2026.</p></div>
+  <div class="hockey-gallery">
+    {hockeyPhotos.map(photo => (
+      <figure>
+        <PortfolioImage image={photo} sizes="(max-width: 760px) 90vw, 55vw" />
+        <figcaption>{photo.caption}</figcaption>
+      </figure>
+    ))}
+  </div>
+  <div class="personal-chapter outdoor-heading"><h3>Out in the open.</h3><p>Trekking, travelling, and noticing the details.<br />Photography is another way I like to explore.</p></div>
+  <div class="outdoor-gallery">
+    {outdoorPhotos.map(photo => (
+      <figure>
+        <PortfolioImage image={photo} sizes="(max-width: 760px) 85vw, 40vw" />
+        <figcaption>{photo.caption}</figcaption>
+      </figure>
+    ))}
+  </div>
+  <div class="personal-socials">
+    <p>A few more moments, beyond this page.</p>
+    <div>
+      <a class="text-link" href={identity.instagram} target="_blank" rel="noopener noreferrer">Personal Instagram <Arrow diagonal /></a>
+      <a class="text-link" href={identity.photography} target="_blank" rel="noopener noreferrer">Photography Instagram <Arrow diagonal /></a>
+    </div>
+  </div>
+</section>

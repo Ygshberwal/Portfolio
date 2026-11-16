@@ -1,0 +1,85 @@
+---
+import Arrow from './Arrow.astro';
+import ProjectCover from './ProjectCover.astro';
+import { projects } from '../data/portfolio';
+import ProjectActions from './ProjectActions.astro';
+
+const featured = projects.filter(project => project.featured);
+const supporting = projects.filter(project => !project.featured).slice(0, 3);
+---
+
+<section id="projects" class="work-section wrap section" aria-labelledby="work-title">
+  <div class="work-stage">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">01 / SELECTED WORK</p>
+        <h2 id="work-title">Ideas, made <em>real.</em></h2>
+      </div>
+      <p>A few things I've built.<br />And the thinking behind them.</p>
+    </div>
+
+    <div class="project-viewport">
+      <div class="featured-grid">
+        {featured.map((project, index) => (
+          <article
+            id={`featured-${project.slug}`}
+            class:list={['featured-project', { 'lead-project': index === 0 }]}
+          >
+            <a
+              class="cover-link"
+              href={`/work/${project.slug}/`}
+              aria-label={`Read the ${project.title} case study`}
+            >
+              <ProjectCover project={project} index={index} />
+              <span class="cover-link-arrow"><Arrow diagonal /></span>
+            </a>
+            <div class="project-intro">
+              <p class="micro">{project.category}</p>
+              <h3><a href={`/work/${project.slug}/`}>{project.title}</a></h3>
+              <p>{project.summary}</p>
+              <ul class="tags" aria-label={`${project.title} technologies`}>
+                {project.stack.slice(0, 4).map(item => <li>{item}</li>)}
+              </ul>
+              <a class="text-link" href={`/work/${project.slug}/`}>
+                Inside the project <Arrow />
+              </a>
+              <ProjectActions project={project} />
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="story-navigation">
+      <nav aria-label="Featured project chapters">
+        {featured.map((project, index) => (
+          <a href={`#featured-${project.slug}`} data-chapter={index}>
+            <span class="chapter-number">0{index + 1}</span>
+            <span>{project.title}</span>
+          </a>
+        ))}
+      </nav>
+      <span class="story-scroll-hint" aria-hidden="true">SCROLL TO CONTINUE <span>↓</span></span>
+      <div class="story-progress" aria-hidden="true"><span></span></div>
+    </div>
+  </div>
+
+  <div class="supporting-work">
+    <p class="micro">ALSO ON THE WORKBENCH</p>
+    <ul>
+      {supporting.map((project, index) => (
+        <li>
+          <a href={`/work/${project.slug}/`}>
+            <span class="micro">0{index + featured.length + 1}</span>
+            <span><strong>{project.title}</strong><small>{project.category}</small></span>
+            <Arrow diagonal />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="work-more">
+    <p>More experiments. More things learned.</p>
+    <a class="text-link" href="/work/">Explore all {projects.length} projects <Arrow /></a>
+  </div>
+</section>

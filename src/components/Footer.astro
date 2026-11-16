@@ -1,0 +1,9 @@
+---
+import { identity } from '../data/portfolio';
+import Arrow from './Arrow.astro';
+---
+<footer class="site-footer wrap">
+  <a class="footer-name" href="/">Yogesh Berwal<span class="accent">.</span></a>
+  <p>Built with care. Kept simple.</p>
+  <div><a href={identity.github} target="_blank" rel="noopener noreferrer">GitHub <Arrow diagonal /></a><a href={identity.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <Arrow diagonal /></a><a href="#top">Back to top ↑</a></div>
+</footer>

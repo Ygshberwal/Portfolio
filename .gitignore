@@ -1,0 +1,51 @@
+# Dependencies and generated output
+/node_modules/
+/dist/
+/.astro/
+/coverage/
+*.tsbuildinfo
+
+# Browser-test artifacts
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/blob-report/
+
+# Environment variables and credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local coding-agent/MCP configuration (keep credentials on this machine)
+/.opencode/
+/opencode.json
+/opencode.jsonc
+
+# Original personal material: keep locally; commit only selected public assets
+/photos/
+/Yogesh_Berwal_Portfolio_*.md
+/Yogesh_resume-22Oct.pdf
+
+# Local hosting state and caches
+/.vercel/
+/.netlify/
+/.wrangler/
+/.cache/
+
+# OS/editor files and logs
+.DS_Store
+._*
+Thumbs.db
+.idea/
+*.swp
+*.swo
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

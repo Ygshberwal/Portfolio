@@ -1,0 +1,30 @@
+---
+import { researchPapers } from '../data/portfolio';
+import Arrow from './Arrow.astro';
+---
+<section id="research" class="research-section wrap section" aria-labelledby="research-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">05 / RESEARCH</p>
+      <h2 id="research-title">Questions worth<br /><em>exploring.</em></h2>
+    </div>
+    <p>Two papers from my time at IIT Mandi.<br />Presented at MBCC · May 2026.</p>
+  </div>
+  <ol class="paper-list" aria-label="Research papers">
+    {researchPapers.map((paper, index) => (
+      <li>
+        <span class="paper-number" aria-hidden="true">0{index + 1}</span>
+        <article>
+          <p class="paper-meta"><span>{paper.role}</span><span>{paper.venue} · {paper.presentedAt}</span></p>
+          <h3>{paper.title}</h3>
+          <p class="paper-authors">{paper.authors.map((author, i) => <>{i > 0 && ' · '}{author === 'Yogesh Berwal' ? <strong>{author}</strong> : author}</>)}</p>
+          <p class="paper-summary">{paper.summary}</p>
+          <div class="paper-bottom">
+            <p class="paper-status">{paper.status}</p>
+            <a class="text-link" href={paper.documentUrl} target="_blank" rel="noopener noreferrer" aria-label={`Read manuscript: ${paper.title}`}>Read manuscript <Arrow diagonal /></a>
+          </div>
+        </article>
+      </li>
+    ))}
+  </ol>
+</section>

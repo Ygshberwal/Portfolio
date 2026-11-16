@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import Arrow from '../../components/Arrow.astro';
+import ProjectCover from '../../components/ProjectCover.astro';
+import ProjectActions from '../../components/ProjectActions.astro';
+import { projects, identity } from '../../data/portfolio';
+const categories = [...new Set(projects.map(project => project.category))];
+---
+<Base title="Selected Work — Yogesh Berwal" description="Full-stack products, backend applications, data engineering, and language-model research by Yogesh Berwal.">
+  <main id="main" class="wrap work-index section">
+    <a class="text-link" href="/#projects">← Back home</a>
+    <div class="page-heading"><p class="eyebrow">THE PROJECT NOTEBOOK</p><h1>Built. Tried.<br /><em>Learned.</em></h1><p>Products, research, and smaller experiments. A curated selection—not every repository, and not all the same kind of work.</p></div>
+    <div class="project-filters" role="group" aria-label="Filter projects"><button type="button" data-filter="all" aria-pressed="true">All work <span>{projects.length}</span></button>{categories.map(category => <button type="button" data-filter={category} aria-pressed="false">{category}</button>)}</div>
+    <p class="sr-only" id="filter-status" role="status">Showing all {projects.length} projects.</p>
+    <div class="project-directory">{projects.map((project, index) => <article data-category={project.category}><a class="cover-link" href={`/work/${project.slug}/`} aria-label={`Explore ${project.title}`}><ProjectCover project={project} index={index} /></a><div class="project-intro"><p class="micro">{project.category}</p><h2><a href={`/work/${project.slug}/`}>{project.title}</a></h2><p>{project.summary}</p><a class="text-link" href={`/work/${project.slug}/`}>Read the project notes <Arrow /></a><ProjectActions project={project} /></div></article>)}</div>
+    <div class="work-more"><p>Looking for the source?</p><a class="text-link" href={identity.github} target="_blank" rel="noopener noreferrer">Explore GitHub <Arrow diagonal /></a></div>
+  </main>
+</Base>
+<script>
+  const controls = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const projects = document.querySelectorAll<HTMLElement>('.project-directory article');
+  controls.forEach(button => button.addEventListener('click', () => {
+    controls.forEach(control => control.setAttribute('aria-pressed', String(control === button)));
+    let count = 0;
+    projects.forEach(project => {
+      const visible = button.dataset.filter === 'all' || project.dataset.category === button.dataset.filter;
+      project.hidden = !visible;
+      if (visible) count++;
+    });
+    const status = document.querySelector('#filter-status');
+    if (status) status.textContent = `Showing ${count} ${button.dataset.filter === 'all' ? '' : button.dataset.filter + ' '}project${count === 1 ? '' : 's'}.`;
+  }));
+</script>

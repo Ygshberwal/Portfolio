@@ -1,0 +1,15 @@
+---
+import type { Project } from '../data/portfolio';
+import { projectImages } from '../data/media';
+import PortfolioImage from './PortfolioImage.astro';
+interface Props { project: Project; index?: number; }
+const { project, index = 0 } = Astro.props;
+const screenshot = projectImages[project.slug]?.[0];
+---
+<div class:list={['project-cover', project.tone, project.slug, { 'has-screenshot': !!screenshot }]} aria-hidden="true">
+  <div class="cover-meta"><span>YB — SELECTED WORK</span><span>{String(index + 1).padStart(2, '0')}</span></div>
+  <div class="cover-art">
+    {screenshot ? <div class="screenshot-frame"><PortfolioImage image={screenshot} /></div> : project.slug === 'sanskrit-pitch' ? <div class="sanskrit-symbol" lang="sa">अ<span>॒</span><i>॑</i></div> : <span class="cover-monogram">{project.mark}</span>}
+  </div>
+  <div class="cover-bottom"><span>{project.title}</span><span>{project.category}</span></div>
+</div>

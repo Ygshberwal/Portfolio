@@ -1,0 +1,681 @@
+/* An asset-led refinement of the existing layout, not a new visual system. */
+@layer refinements {
+  figcaption {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.8;
+    margin-top: 13px;
+  }
+
+  .has-screenshot .cover-art {
+    min-height: 0;
+    padding: 18px 0;
+    position: relative;
+    display: block;
+  }
+
+  .has-screenshot .screenshot-frame {
+    position: absolute;
+    inset: 18px 0;
+    width: auto;
+  }
+
+  .screenshot-frame {
+    width: 100%;
+    border: 1px solid rgb(32 40 32 / 12%);
+    box-shadow: 0 12px 28px -18px rgb(32 40 32 / 32%);
+    overflow: hidden;
+    background: #fafbff;
+    transition: transform 350ms ease;
+  }
+
+  .screenshot-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .cover-link:hover .screenshot-frame {
+    transform: translateY(-3px);
+  }
+
+  .supporting-work {
+    margin-top: 60px;
+    padding-top: 25px;
+    border-top: 1px solid var(--line);
+  }
+
+  .supporting-work > .micro {
+    font-size: 8px;
+  }
+
+  .supporting-work ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+  }
+
+  .supporting-work a {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 76px;
+  }
+
+  .supporting-work a > .micro {
+    align-self: start;
+    margin-top: 18px;
+    font-size: 9px;
+  }
+
+  .supporting-work strong {
+    display: block;
+    font-weight: 550;
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: -.035em;
+  }
+
+  .supporting-work small {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 10px;
+  }
+
+  .supporting-work .arrow {
+    margin-left: auto;
+    width: 16px;
+    height: 16px;
+  }
+
+  .supporting-work a:hover strong {
+    color: var(--green);
+  }
+
+  .timeline {
+    border-left: 1px solid #c5cebd;
+    padding-left: 32px;
+  }
+
+  .experience {
+    position: relative;
+  }
+
+  .experience::before {
+    content: '';
+    position: absolute;
+    left: -37px;
+    top: 3px;
+    width: 9px;
+    height: 9px;
+    border: 1px solid var(--green);
+    border-radius: 50%;
+    background: #eff0e9;
+  }
+
+  .experience:first-child::before {
+    background: var(--green);
+    box-shadow: 0 0 0 5px #e0e8db;
+  }
+
+  .experience + .experience::before {
+    top: 39px;
+  }
+
+  .profile-photo {
+    max-width: 260px;
+    margin: 35px 0 0 34px;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .profile-photo::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 16px -16px 30px 16px;
+    border: 1px solid var(--line);
+  }
+
+  .profile-photo img {
+    width: 100%;
+    height: auto;
+    background: #e9e9e5;
+  }
+
+  .profile-photo figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 9px;
+  }
+
+  .profile-photo figcaption > span {
+    font-size: 8px;
+  }
+
+  .about-copy > .text-link {
+    margin-top: 24px;
+  }
+
+  .education-layout {
+    align-items: start;
+  }
+
+  .education-list {
+    list-style: none;
+    padding: 0 0 0 30px;
+    margin: 0;
+    border-left: 1px solid var(--line);
+  }
+
+  .education-list > li {
+    position: relative;
+    padding-block: 24px 28px;
+    border-top: 1px solid var(--line);
+  }
+
+  .education-list > li::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--green);
+    border-radius: 50%;
+    background: var(--paper);
+    position: absolute;
+    left: -34px;
+    top: 29px;
+  }
+
+  .education-list > li:first-child::before {
+    background: var(--green);
+  }
+
+  .education-photo {
+    padding: 16px;
+    background: #e9ede4;
+    margin-top: -16px;
+  }
+
+  .education-photo img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: 50% 70%;
+  }
+
+  .education-photo figcaption {
+    font-size: 9px;
+  }
+
+  .coding-note {
+    border-top: 1px solid var(--line);
+    margin-top: 36px;
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .coding-note p {
+    font-size: 12px;
+  }
+
+  .coding-note strong {
+    font-size: 29px;
+    font-weight: 500;
+    letter-spacing: -.05em;
+    color: var(--green);
+    margin-right: 12px;
+  }
+
+  .coding-note > div {
+    display: flex;
+    gap: 25px;
+  }
+
+  .research-section,
+  .beyond-section {
+    border-top: 1px solid var(--line);
+  }
+
+  .paper-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .paper-list > li {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 25px;
+    border-top: 1px solid var(--line);
+    padding-block: 35px;
+  }
+
+  .paper-number {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--green);
+    font-size: 35px;
+    line-height: 1;
+    padding-top: 4px;
+  }
+
+  .paper-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    margin-bottom: 15px;
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: .035em;
+  }
+
+  .paper-meta > :first-child {
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .paper-list h3 {
+    max-width: 900px;
+    font-size: clamp(21px, 2.4vw, 30px);
+    line-height: 1.4;
+    letter-spacing: -.035em;
+  }
+
+  .paper-authors {
+    font-size: 11px;
+    margin-top: 16px;
+  }
+
+  .paper-authors strong {
+    font-weight: 650;
+    color: var(--ink);
+  }
+
+  .paper-summary {
+    max-width: 740px;
+    font-size: 13px;
+    line-height: 1.9;
+    margin-top: 18px;
+  }
+
+  .paper-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-top: 15px;
+  }
+
+  .paper-status {
+    font-size: 10px;
+    color: var(--green);
+    border-left: 2px solid #9bb29b;
+    padding-left: 10px;
+  }
+
+  .hockey-gallery {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .hockey-gallery figure:nth-child(2) {
+    margin-top: 65px;
+  }
+
+  .hockey-gallery img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .hockey-gallery figure:nth-child(2) img {
+    object-position: 50% 64%;
+  }
+
+  .beyond-note {
+    margin-top: 35px;
+    font-size: 13px;
+    max-width: 560px;
+  }
+
+  .project-gallery {
+    display: grid;
+    gap: 35px;
+  }
+
+  .project-gallery figure {
+    background: #edf0e7;
+    padding: 24px;
+    border: 1px solid var(--line);
+  }
+
+  .project-gallery img {
+    width: 100%;
+    height: auto;
+  }
+
+  .project-gallery figure:has(img[src*='flowboard-planner']) {
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .project-gallery figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
+  .project-gallery figcaption > span {
+    white-space: nowrap;
+  }
+
+  .owner-story {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    padding-block: 30px;
+    border-block: 1px solid var(--line);
+  }
+
+  .owner-story p {
+    font-family: var(--serif);
+    font-size: 26px;
+    color: var(--ink);
+    line-height: 1.55;
+    letter-spacing: -.02em;
+  }
+
+  .paper-callout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    border-block: 1px solid var(--line);
+    padding-block: 23px;
+    margin-top: 25px;
+  }
+
+  .paper-callout p {
+    font-size: 12px;
+    color: var(--ink);
+  }
+
+  .paper-callout p > span {
+    color: var(--green);
+    font-size: 10px;
+  }
+
+  .hero-portrait {
+    width: min(100%, 380px);
+    margin: 0 0 55px auto;
+    align-self: start;
+  }
+
+  .hero-portrait-frame {
+    position: relative;
+    isolation: isolate;
+    background: #e7e8e2;
+  }
+
+  .hero-portrait-frame::before {
+    content: '';
+    position: absolute;
+    inset: 16px -16px -16px 16px;
+    border: 1px solid #c8d1c2;
+    z-index: -1;
+  }
+
+  .hero-portrait img {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-portrait figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 29px;
+    font-size: 10px;
+  }
+
+  .hero-portrait figcaption > :first-child {
+    font-weight: 650;
+    color: var(--ink);
+  }
+
+  .hero-socials {
+    display: flex;
+    gap: 24px;
+    margin-top: 18px;
+  }
+
+  .hero-socials a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 44px;
+    font-size: 13px;
+    color: var(--green);
+    font-weight: 650;
+  }
+
+  .hero-socials .arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  .project-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+  }
+
+  .case-heading .project-actions {
+    margin-top: 30px;
+    gap: 12px 28px;
+  }
+
+  .featured-project .project-actions {
+    margin-top: 13px;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+  }
+
+  .featured-project .project-actions .text-link {
+    font-size: 10px;
+    min-height: 38px;
+  }
+
+  .featured-project .project-actions .arrow {
+    width: 13px;
+    height: 13px;
+  }
+
+  .demo-note {
+    max-width: 620px;
+    font-size: 11px;
+    margin-top: 20px;
+  }
+
+  .earlier-experience h3 {
+    font-size: 23px;
+  }
+
+  .experience > .earlier-label {
+    margin-top: 15px;
+    font-size: 8px;
+  }
+
+  .contact-profile-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    margin-top: 28px;
+  }
+
+  .contact-profile-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 44px;
+    color: #e2ebdb;
+    font-size: 13px;
+  }
+
+  .contact-profile-links .arrow {
+    width: 15px;
+    height: 15px;
+  }
+
+  .personal-chapter {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 30px;
+    border-top: 1px solid var(--line);
+    padding-top: 23px;
+    margin-bottom: 30px;
+  }
+
+  .personal-chapter h3 {
+    font-size: 25px;
+  }
+
+  .personal-chapter p {
+    font-size: 12px;
+    max-width: 430px;
+  }
+
+  .outdoor-heading {
+    margin-top: 75px;
+  }
+
+  .outdoor-gallery {
+    display: grid;
+    grid-template-columns: 1fr .8fr;
+    gap: 50px;
+    max-width: 980px;
+    margin-inline: auto;
+    align-items: start;
+  }
+
+  .outdoor-gallery figure:nth-child(2) {
+    margin-top: 65px;
+  }
+
+  .outdoor-gallery img {
+    width: 100%;
+    height: auto;
+  }
+
+  .personal-socials {
+    border-top: 1px solid var(--line);
+    margin-top: 45px;
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 30px;
+  }
+
+  .personal-socials p {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink);
+    font-size: 23px;
+  }
+
+  .personal-socials > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+  }
+
+  @media (max-width: 1100px) {
+    .site-header { gap: 20px; }
+    .site-header > nav:not(.mobile-nav) { gap: 18px; margin-right: 18px; }
+    .supporting-work strong { font-size: 14px; }
+    .coding-note { align-items: start; flex-direction: column; gap: 10px; }
+    .education-photo img { height: 300px; }
+  }
+
+  @media (max-width: 760px) {
+    .hero-portrait { width: min(80%, 280px); margin: 0 18px 35px auto; }
+    .hero-socials { margin-top: 14px; gap: 25px; }
+    .hero-socials a { font-size: 12px; }
+    .contact-profile-links { gap: 8px 23px; }
+    .contact-profile-links a { font-size: 12px; }
+    .personal-chapter { flex-direction: column; gap: 15px; }
+    .personal-chapter p { font-size: 11px; }
+    .outdoor-gallery { gap: 23px; grid-template-columns: 1fr; }
+    .outdoor-gallery figure { width: 90%; }
+    .outdoor-gallery figure:nth-child(2) { margin-top: 0; margin-left: auto; width: 75%; }
+    .personal-socials p { font-size: 22px; }
+    .supporting-work { margin-top: 40px; }
+    .supporting-work ul { grid-template-columns: 1fr; gap: 0; }
+    .supporting-work li + li { border-top: 1px solid var(--line); }
+    .supporting-work a { min-height: 86px; }
+    .supporting-work strong { font-size: 18px; }
+    .timeline { padding-left: 23px; }
+    .experience::before { left: -28px; }
+    .profile-photo { margin-left: 14px; max-width: 230px; }
+    .education-photo { max-width: 380px; margin: 20px 0 0 auto; }
+    .education-photo img { height: 330px; }
+    .education-list { padding-left: 22px; }
+    .education-list > li::before { left: -26px; }
+    .education-list > li { padding-block: 24px; }
+    .education-list h3 { font-size: 16px; }
+    .education-list .micro { font-size: 8px; }
+    .coding-note p { font-size: 11px; }
+    .coding-note strong { display: block; margin-bottom: 5px; }
+    .paper-list > li { grid-template-columns: 27px 1fr; gap: 14px; padding-block: 27px; }
+    .paper-number { font-size: 25px; }
+    .paper-list h3 { font-size: 21px; }
+    .paper-meta { font-size: 8px; gap: 8px; }
+    .paper-meta > span { display: block; width: 100%; }
+    .paper-authors { font-size: 10px; }
+    .paper-summary { font-size: 12px; }
+    .paper-bottom { display: block; }
+    .paper-status { font-size: 9px; margin-block: 20px 10px; }
+    .hockey-gallery { grid-template-columns: 1fr; gap: 30px; }
+    .hockey-gallery figure:nth-child(2) { margin-top: 0; width: 85%; margin-left: auto; }
+    .beyond-note { font-size: 12px; }
+    .project-gallery figure { padding: 12px; }
+    .project-gallery figcaption { display: block; font-size: 9px; }
+    .project-gallery figcaption > span { display: block; margin-top: 8px; }
+    .owner-story { grid-template-columns: 1fr; gap: 16px; padding-block: 23px; }
+    .owner-story p { font-size: 23px; }
+    .paper-callout { align-items: start; flex-direction: column; gap: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .screenshot-frame { transition: none; }
+    .cover-link:hover .screenshot-frame { transform: none; }
+  }
+
+  @media print {
+    .hero-portrait { max-width: 180px; }
+    .hero-portrait-frame::before { display: none; }
+    .hero-portrait { transform: none !important; }
+    .outdoor-gallery { max-width: 350px; }
+    .timeline, .education-list { border-left: 0; }
+    .experience::before, .education-list > li::before { display: none; }
+    .profile-photo, .education-photo, .hockey-gallery { max-width: 250px; }
+    .hockey-gallery figure:nth-child(2) { margin-top: 0; }
+    .paper-list > li { break-inside: avoid; }
+  }
+}
