@@ -40,8 +40,13 @@ export function initializeScrollExperience() {
     const reveals = new IntersectionObserver(entries => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
+        // Timeline dots stay fixed; fade their headings in place rather than
+        // translating a title over the role/degree immediately below it.
+        const frames = entry.target.matches('[data-timeline-entry] > h3')
+          ? [{ opacity: 0.85 }, { opacity: 1 }]
+          : [{ transform: 'translateY(26px)' }, { transform: 'translateY(0)' }];
         const animation = entry.target.animate(
-          [{ transform: 'translateY(26px)' }, { transform: 'translateY(0)' }],
+          frames,
           { duration: 650, easing: 'cubic-bezier(.22, 1, .36, 1)' },
         );
         animations.add(animation);
@@ -50,7 +55,7 @@ export function initializeScrollExperience() {
       }
     }, { threshold: 0.12 });
     document.querySelectorAll(
-      '.experience, .about-copy, .skills-heading, .skill-group, .education-list > li, .paper-list > li, .hockey-gallery figure, .outdoor-gallery figure, .contact-section h2',
+      '.experience h3, .about-copy, .skills-heading, .skill-group, .education-list h3, .paper-list > li, .hockey-gallery figure, .outdoor-gallery figure, .contact-section h2',
     ).forEach(element => reveals.observe(element));
 
     media.add('(min-width: 1100px) and (min-height: 740px)', () => {

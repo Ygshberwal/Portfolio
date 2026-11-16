@@ -9,9 +9,9 @@ import Arrow from './Arrow.astro';
       <h2 id="experience-title">Learning by<br /><em>building.</em></h2>
       <p>From teaching a first program to working across service boundaries—experiences that have shaped how I approach engineering.</p>
     </div>
-    <div class="timeline" role="list" aria-label="Selected work experience, most recent first">
+    <div class="timeline" role="list" aria-label="Selected work experience, most recent first" data-timeline="experience">
       {experience.map(job => (
-        <article class:list={['experience', { 'earlier-experience': job.earlier }]} role="listitem">
+        <article class:list={['experience', { 'earlier-experience': job.earlier }]} role="listitem" data-timeline-entry>
           <div class="experience-meta"><span>{job.dates.toUpperCase()}</span><span>{job.location.toUpperCase()}</span></div>
           <h3>{job.company}{job.current && <span class="current-tag">CURRENT</span>}</h3>
           <p class="role">{job.role}</p>

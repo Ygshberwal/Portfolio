@@ -11,6 +11,7 @@ import PortfolioImage from '../components/PortfolioImage.astro';
 import { portraits } from '../data/media';
 import { identity, skills } from '../data/portfolio';
 import '../styles/scroll.css';
+import '../styles/timeline.css';
 ---
 <Base>
   <main id="main">
@@ -59,5 +60,10 @@ import '../styles/scroll.css';
 
 <script>
   import { initializeScrollExperience } from '../scripts/scroll-experience';
+  import { initializeTimelineIndicators } from '../scripts/timeline-indicator';
   initializeScrollExperience();
+  const disposeTimelines = initializeTimelineIndicators();
+  window.addEventListener('pagehide', event => {
+    if (!event.persisted) disposeTimelines();
+  }, { once: true });
 </script>

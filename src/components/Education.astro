@@ -13,9 +13,9 @@ import Arrow from './Arrow.astro';
     <p>Computer science at the core.<br />Still learning across disciplines.</p>
   </div>
   <div class="education-layout">
-    <ol class="education-list" aria-label="Education timeline, most recent first">
+    <ol class="education-list" aria-label="Education timeline, most recent first" data-timeline="education">
       {education.map(item => (
-        <li>
+        <li data-timeline-entry>
           <span class="micro">{item.dates}</span>
           <h3>{item.school}</h3>
           <p>{item.degree}</p>

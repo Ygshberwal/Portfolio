@@ -1,0 +1,105 @@
+@layer refinements {
+  [data-timeline] {
+    position: relative;
+    --timeline-light: #67b18a;
+    --timeline-halo: rgb(75 160 114 / 24%);
+  }
+
+  /* Decorative pseudo-elements preserve the list's semantic structure. */
+  [data-timeline][data-timeline-ready]::before,
+  [data-timeline][data-timeline-ready]::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    /* Position follows native scroll frame-for-frame; a transform transition
+       would lag behind the reading line on every scroll event. */
+    transition: opacity 250ms ease;
+  }
+
+  /* An illuminated trail, ending at the visitor's central reading position. */
+  [data-timeline][data-timeline-ready]::before {
+    left: -1px;
+    top: var(--timeline-start, 0px);
+    width: 2px;
+    height: var(--timeline-span, 0px);
+    background: linear-gradient(to bottom, var(--green), var(--timeline-light));
+    box-shadow: 0 0 8px var(--timeline-halo);
+    transform: scaleY(var(--timeline-progress, 0));
+    transform-origin: top;
+  }
+
+  /* The small, white-hot core sits on the existing one-pixel rail. */
+  [data-timeline][data-timeline-ready]::after {
+    z-index: 2;
+    left: -.5px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--green);
+    background: #e7ffed;
+    box-shadow: 0 0 4px var(--timeline-light), 0 0 13px 4px var(--timeline-halo);
+    transform: translate3d(-50%, var(--timeline-marker-y, 0px), 0) translateY(-50%);
+    animation: timeline-breathe 2.8s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+
+  [data-timeline][data-timeline-visible]::before,
+  [data-timeline][data-timeline-visible]::after {
+    opacity: 1;
+  }
+
+  [data-timeline][data-timeline-visible]::after {
+    animation-play-state: running;
+  }
+
+  /* Reading position is separate from the employment CURRENT badge. */
+  [data-timeline][data-timeline-ready] > [data-timeline-entry]::before {
+    background: var(--paper);
+    box-shadow: none;
+    transition: background-color 250ms ease, box-shadow 350ms ease;
+  }
+
+  [data-timeline][data-timeline-ready] > [data-timeline-entry][data-timeline-active]::before {
+    background: var(--green);
+    box-shadow: 0 0 0 5px var(--timeline-halo), 0 0 12px var(--timeline-halo);
+  }
+
+  [data-timeline-entry][data-timeline-active] > .experience-meta > :first-child,
+  [data-timeline-entry][data-timeline-active] > .micro {
+    color: var(--green);
+  }
+
+  @keyframes timeline-breathe {
+    0%, 100% { box-shadow: 0 0 4px var(--timeline-light), 0 0 12px 3px var(--timeline-halo); }
+    50% { box-shadow: 0 0 7px var(--timeline-light), 0 0 20px 6px var(--timeline-halo); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-timeline][data-timeline-ready]::before,
+    [data-timeline][data-timeline-ready]::after {
+      display: none;
+      animation: none;
+      transition: none;
+    }
+
+    [data-timeline][data-timeline-ready] > [data-timeline-entry]::before,
+    [data-timeline][data-timeline-ready] > [data-timeline-entry][data-timeline-active]::before {
+      transition: none;
+      box-shadow: none;
+    }
+  }
+
+  @media print {
+    [data-timeline][data-timeline-ready]::before,
+    [data-timeline][data-timeline-ready]::after {
+      display: none;
+      animation: none;
+    }
+
+    [data-timeline][data-timeline-ready] > [data-timeline-entry]::before {
+      display: none;
+    }
+  }
+}
